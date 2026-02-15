@@ -2,6 +2,9 @@
 
 A full-stack real-time polling application built with React, Node.js, Socket.io, and MongoDB.
 
+Frontend Live on:- https://createpoll.vercel.app/
+Backend Live on:- https://poll-room.onrender.com
+
 ## Features
 
 ✅ Create polls with custom questions and options  
