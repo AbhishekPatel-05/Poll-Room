@@ -12,14 +12,17 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: '*',
     methods: ['GET', 'POST']
   }
 });
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: '*',  // Allow all origins
+  credentials: true
+}));
 app.use(express.json());
 
 app.use('/', pollRoutes(io));
