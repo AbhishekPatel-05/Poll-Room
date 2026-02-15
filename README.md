@@ -32,11 +32,3 @@ npm install
 # Create .env file with REACT_APP_API_URL
 npm start
 ```
-
-## Demo
-
-[Add screenshot or demo link here]
-
-## License
-
-MIT
