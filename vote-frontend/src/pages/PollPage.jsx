@@ -36,6 +36,17 @@ function PollPage() {
       setVoted(true);
     }
 
+    const loadPoll = async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/polls/${id}`);
+        setPoll(res.data);
+        setLoad(false);
+      } catch (error) {
+        setErr('Poll not found');
+        setLoad(false);
+      }
+    };
+
     loadPoll();
 
     const socket = io(process.env.REACT_APP_API_URL);
@@ -48,17 +59,6 @@ function PollPage() {
     };
   }, [id]);
 
-  const loadPoll = async () => {
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/polls/${id}`);
-      setPoll(res.data);
-      setLoad(false);
-    } catch (error) {
-      setErr('Poll not found');
-      setLoad(false);
-    }
-  };
-
   const submit = async () => {
     if (selected === null) {
       setErr('Please select an option');
@@ -70,7 +70,7 @@ function PollPage() {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/polls/${id}/vote`,
+        `${process.env.REACT_APP_API_URL}/api/polls/${id}/vote`,
         { optionIndex: selected, voterIdentifier: voterId }
       );
 
