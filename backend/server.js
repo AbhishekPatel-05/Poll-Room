@@ -20,7 +20,7 @@ const io = socketIo(server, {
 connectDB();
 
 app.use(cors({
-  origin: '*',  // Allow all origins
+  origin: '*', 
   credentials: true
 }));
 app.use(express.json());
